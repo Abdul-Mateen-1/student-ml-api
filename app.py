@@ -6,6 +6,9 @@ from pathlib import Path
 from flask import Flask, jsonify, request
 
 
+MODEL_VERSION = "model-1"
+
+
 def read_application_version() -> str:
     """Return the source-controlled application version."""
     return Path(__file__).with_name("VERSION").read_text(encoding="utf-8").strip()
@@ -19,7 +22,8 @@ def create_app() -> Flask:
         return jsonify(
             status="healthy",
             application="student-ml-api",
-            version=read_application_version(),
+            application_version=read_application_version(),
+            model_version=MODEL_VERSION,
         )
 
     @app.post("/predict")
