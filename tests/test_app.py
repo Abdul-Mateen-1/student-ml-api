@@ -18,7 +18,7 @@ def test_health(client):
 
     assert response.status_code == 200
     assert response.get_json() == {
-        "status": "healthy",
+        "status": "wrong",
         "application": "student-ml-api",
         "version": "1.0.0",
     }
